@@ -221,7 +221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362853980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.037, y: -0.93, z: 0.01830518}
+  m_LocalPosition: {x: 0, y: -0.93, z: 0}
   m_LocalScale: {x: 17.718351, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -453,7 +453,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 287
+    m_Bits: 415
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -814,7 +814,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1151919614}
   - component: {fileID: 1151919615}
-  m_Layer: 0
+  - component: {fileID: 1151919616}
+  m_Layer: 7
   m_Name: EnemyArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,9 +853,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  rayOutPoint: {fileID: 1437935648}
-  rayInPoint: {fileID: 1384157277}
-  destination: {x: 0, y: 0}
+  destination: {x: 0, y: 0, z: 0}
+  velocity: 0.03
+--- !u!143 &1151919616
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151919613}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.09
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!1 &1221812518
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1384157277}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RayInPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1437935648}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RayOutPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1140,7 +1166,7 @@ GameObject:
   - component: {fileID: 1831972783}
   - component: {fileID: 1831972782}
   - component: {fileID: 1831972781}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
