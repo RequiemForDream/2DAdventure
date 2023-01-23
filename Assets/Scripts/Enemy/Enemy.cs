@@ -5,6 +5,8 @@ namespace Assets.Scripts.Enemy
     public abstract class Enemy : MonoBehaviour, IEnemy
     {
         [SerializeField] private int health;
+        public GameObject player;
+        
         
         public void ApplyDamage(int damage)
         {
@@ -16,10 +18,11 @@ namespace Assets.Scripts.Enemy
             
         }
 
-        protected void Move(CharacterController controller, Vector3 moveDirection, float speed)
+        protected void Move(float speed, GameObject player)
         {
-            controller.Move(moveDirection * speed * Time.fixedDeltaTime);
-            //rigidbody2D.MovePosition(new Vector2(transform.position.x + velocity, transform.position.y));                    
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            Vector2 direction = player.transform.position - this.transform.position;
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
         }
     }
 }

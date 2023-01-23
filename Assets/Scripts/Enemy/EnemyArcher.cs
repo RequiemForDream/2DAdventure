@@ -8,18 +8,17 @@ namespace Assets.Scripts.Enemy
         private new Rigidbody2D rigidbody2D;
         
         [SerializeField] private float velocity;
-        private CharacterController controller;
 
         private void Awake()
         {
-            controller = GetComponent<CharacterController>();
+            
             //rigidbody2D = GetComponent<Rigidbody2D>();    
         }
 
         private void Update()
         {
-            
-            
+
+            Move(velocity, player);
         }
     }
 }

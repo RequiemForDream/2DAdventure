@@ -11,12 +11,12 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Trampoline
   - Enemy
   - Ground
-  - 
-  - 
-  - 
+  - Ladder
+  - Chest
+  - Traps
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4229786335
+    locked: 0
+  - name: Enemy
+    uniqueID: 945109393
+    locked: 0
+  - name: Interactebles
+    uniqueID: 526310645
+    locked: 0
+  - name: Ground
+    uniqueID: 4114998107
+    locked: 0
+  - name: Trap
+    uniqueID: 1487439925
+    locked: 0
+  - name: Player
+    uniqueID: 2604122251
     locked: 0
