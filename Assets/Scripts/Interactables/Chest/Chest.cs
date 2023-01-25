@@ -1,15 +1,15 @@
 using UnityEngine;
 using Assets.Scripts.Interactables.Opening;
 
-public class Chest : MonoBehaviour, IOpenable
+public class Chest : MonoBehaviour, IOpenableOnce
 {
+    public bool isOpened { get => _isOpened; }
     [SerializeField] private ChestInfo chestInfo;
-    public bool isOpened { get; private set; }
-
-    private Animator animator;
-
-    private int OpenHash = Animator.StringToHash("isOpened");
     
+    private Animator animator;
+    private int OpenHash = Animator.StringToHash("isOpened");
+    private bool _isOpened;  
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -17,7 +17,7 @@ public class Chest : MonoBehaviour, IOpenable
 
     public void Open()
     {
-        isOpened = true;
+        _isOpened = true;
         animator.SetBool(OpenHash, true);
         EventManager.SendMoneyChanged(chestInfo.reward);
     }

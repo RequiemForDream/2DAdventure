@@ -16,9 +16,9 @@ public class Pendulum : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 3)
-        {
-            IHandleHealth handleHealth = collision.gameObject.GetComponent<IHandleHealth>();
+        IHandleHealth handleHealth = collision.gameObject.GetComponent<IHandleHealth>();
+        if (handleHealth != null)
+        {           
             handleHealth?.ApplyDamage(this.damage);                     
         }
     }

@@ -2,8 +2,9 @@
 
 namespace Assets.Scripts.Interactables.Opening
 {
-    public interface IOpenable
+    public interface IOpenableOnce
     {
+        bool isOpened { get; }
         void Open();
     }
 }

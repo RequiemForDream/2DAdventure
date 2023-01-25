@@ -14,7 +14,7 @@ namespace Assets.Scripts.MainCharacterController
         [SerializeField] private LayerMask groundMask;
 
         [Header("Climbing")]
-        private float climbSpeed = 2f;
+        [SerializeField] private float climbSpeed = 2f;
 
         private new Rigidbody2D rigidbody2D;
         private bool isGrounded;

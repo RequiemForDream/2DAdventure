@@ -23,9 +23,7 @@ namespace Assets.Scripts.MainCharacterController
 
         private void Update()
         {           
-            ReadJump();
-            ReadOpen();
-            
+            ReadJump();      
         }
 
         private void FixedUpdate()
@@ -50,24 +48,13 @@ namespace Assets.Scripts.MainCharacterController
             }
         }
 
-        private void ReadOpen()
-        {
-            if (Opening.isAbleToOpen)
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                   
-                }
-            }
-        }
-
         private void ReadClimb()
         {
             var vertical = Input.GetAxis("Vertical");
             var horizontal = Input.GetAxis("Horizontal");
             var direction = new Vector2(horizontal, vertical);
 
-            if (Climbing.isAbleToClimb)
+            if (LadderChecker.isAbleToClimb)
             {
                 climbable.Climb(direction);
             }           

@@ -1,21 +1,20 @@
 using UnityEngine;
 
-public class Climbing : MonoBehaviour
+public class LadderChecker : MonoBehaviour
 {
     public static bool isAbleToClimb { get; private set; }
-
-    [SerializeField] private LayerMask ladderMask;
     
-    private new Rigidbody2D rigidbody2D;   
+    [SerializeField] private new Rigidbody2D rigidbody2D;
 
     private void Start()
-    {
+    {       
         rigidbody2D = GetComponentInParent<Rigidbody2D>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 9)
+        LayerMask ladderMask = 9;
+        if (collision.gameObject.layer == ladderMask)
         {
             isAbleToClimb = true;
             rigidbody2D.gravityScale = 0f;          
