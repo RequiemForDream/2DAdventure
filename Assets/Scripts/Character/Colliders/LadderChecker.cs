@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class LadderChecker : MonoBehaviour
 {
     public static bool isAbleToClimb { get; private set; }

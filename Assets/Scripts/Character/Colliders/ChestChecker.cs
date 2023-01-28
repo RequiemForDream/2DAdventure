@@ -1,6 +1,7 @@
 using Assets.Scripts.Interactables.Opening;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class ChestChecker : MonoBehaviour
 {
     [SerializeField] private LayerMask chestLayer;

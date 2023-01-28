@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
-using Assets.Scripts.Interactables.Opening;
 using Assets.Scripts.Interactables;
+using Assets.Scripts.Character.Colliders;
 
 namespace Assets.Scripts.MainCharacterController
 {
@@ -9,11 +9,13 @@ namespace Assets.Scripts.MainCharacterController
     {
         private IControllable controllable;
         private IClimbable climbable;
+        private IPlatformable platformable;
 
         private void Awake()
         {
             controllable = GetComponent<IControllable>();
             climbable = GetComponent<IClimbable>();
+            platformable = GetComponentInChildren<IPlatformable>();
 
             if (controllable == null )
             {
@@ -23,7 +25,8 @@ namespace Assets.Scripts.MainCharacterController
 
         private void Update()
         {           
-            ReadJump();      
+            ReadJump();
+            GetDown();
         }
 
         private void FixedUpdate()
@@ -58,6 +61,17 @@ namespace Assets.Scripts.MainCharacterController
             {
                 climbable.Climb(direction);
             }           
+        }
+
+        private void GetDown()
+        {
+            if (platformable.isOnPlatform == true)
+            {
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    platformable.TurnOffTrigger();
+                }
+            }
         }
     }
 }

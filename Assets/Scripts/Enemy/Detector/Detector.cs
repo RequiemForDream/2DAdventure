@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemy.Detector
-{   
-    public class Detector : MonoBehaviour, IDetector
+{
+    public class Detector : MonoBehaviour//, IDetector
     {
         public event ObjectDetectedHandler OnGameObjectDetectedEvent;
         public event ObjectDetectedHandler OnGameObjectDetectionReleasedEvent;
 
-        public GameObject[] detectedObjects => _detectedObjects.ToArray();
+        /*public GameObject[] detectedObjects => _detectedObjects.ToArray();
 
         private List<GameObject> _detectedObjects = new List<GameObject>();
 
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Enemy.Detector
                 _detectedObjects.Remove(detectableObject.gameObject);
 
                 OnGameObjectDetectionReleasedEvent?.Invoke(gameObject, detectableObject.gameObject);
-            }   
+            }
         }
 
         public void ReleaseDetection(GameObject detectedObject)
@@ -58,18 +58,49 @@ namespace Assets.Scripts.Enemy.Detector
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
+            if (isColliderDetectableObject(other, out IDetectableObject detectedObject))
+            {
+                Detect(detectedObject);
+            }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        private void OnTriggerExit2D(Collider2D other)
         {
-            
+            if (isColliderDetectableObject(other, out IDetectableObject detectedObject))
+            {
+                ReleaseDetection(detectedObject);
+            }
         }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            IDetectableObject detectableObject = collision.gameObject.GetComponent<IDetectableObject>();
+            if (detectableObject != null)
+                Debug.Log("In");
+               
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            IDetectableObject detectableObject = collision.gameObject.GetComponent<IDetectableObject>();
+            if (detectableObject != null)
+                Debug.Log("Okay");
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+
+            IDetectableObject detectableObject = collision.gameObject.GetComponent<IDetectableObject>();
+            if (detectableObject != null)
+                Debug.Log("Staying");
+                //Detect(detectableObject);
+        }
+
 
         private bool isColliderDetectableObject(Collider2D collider, out IDetectableObject detectedObject)
         {
             detectedObject = collider.GetComponent<IDetectableObject>();
-            return detectedObject!= null;
-        }
+            return detectedObject != null;
+        }*/
     }
 }

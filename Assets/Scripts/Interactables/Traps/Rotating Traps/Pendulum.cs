@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Pendulum : MonoBehaviour
 {
-    [SerializeField] private float damage;
-
-    private Tweener tweener;  
+    [SerializeField] private float damage; 
 
     private void Update()
     {
-        tweener = transform.DORotate(new Vector3(0f, 0f, 360f), 5, RotateMode.LocalAxisAdd).
-            SetLoops(-1).SetEase(Ease.Linear);  
+        Rotate();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,5 +18,11 @@ public class Pendulum : MonoBehaviour
         {           
             handleHealth?.ApplyDamage(this.damage);                     
         }
+    }
+
+    private void Rotate()
+    {
+        transform.DORotate(new Vector3(0f, 0f, 360f), 5, RotateMode.LocalAxisAdd).
+            SetLoops(-1).SetEase(Ease.Linear);
     }
 }
