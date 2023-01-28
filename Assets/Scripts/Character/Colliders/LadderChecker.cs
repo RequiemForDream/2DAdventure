@@ -14,8 +14,7 @@ public class LadderChecker : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        LayerMask ladderMask = 9;
-        if (collision.gameObject.layer == ladderMask)
+        if (collision.gameObject.layer == 9)
         {
             isAbleToClimb = true;
             rigidbody2D.gravityScale = 0f;          
