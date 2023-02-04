@@ -11,8 +11,7 @@ public class ChestChecker : MonoBehaviour
         IOpenableOnce openable = collision.GetComponent<IOpenableOnce>();        
         
         if (openable != null)
-        {
-                
+        {               
             if (openable.isOpened == false)
             {
                openable.Open();

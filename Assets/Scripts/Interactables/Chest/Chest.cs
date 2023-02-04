@@ -15,6 +15,11 @@ public class Chest : MonoBehaviour, IOpenableOnce
         animator = GetComponent<Animator>();
     }
 
+    public void ToggleState()
+    {
+        _isOpened = !_isOpened;
+    }
+
     public void Open()
     {
         _isOpened = true;

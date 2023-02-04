@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Trampoline : MonoBehaviour
 {
     [SerializeField] private float bounce = 20f;

@@ -2,20 +2,25 @@
 using System;
 using Assets.Scripts.Interactables;
 using Assets.Scripts.Character.Colliders;
+using Assets.Scripts.Character.CharacterController;
 
 namespace Assets.Scripts.MainCharacterController
 {
     public class CharacterInputController : MonoBehaviour
     {
+        [SerializeField] private GrapplingHook grapplingHook;
+
         private IControllable controllable;
         private IClimbable climbable;
         private IPlatformable platformable;
+        private IHookable hookable;
 
         private void Awake()
         {
             controllable = GetComponent<IControllable>();
             climbable = GetComponent<IClimbable>();
             platformable = GetComponentInChildren<IPlatformable>();
+            hookable = GetComponent<IHookable>();
 
             if (controllable == null )
             {
@@ -27,6 +32,10 @@ namespace Assets.Scripts.MainCharacterController
         {           
             ReadJump();
             GetDown();
+            CreateHook();
+            DisableHook();
+            ClimbHook();
+            DescendHook();
         }
 
         private void FixedUpdate()
@@ -71,6 +80,38 @@ namespace Assets.Scripts.MainCharacterController
                 {
                     platformable.TurnOffTrigger();
                 }
+            }
+        }
+
+        private void CreateHook()
+        {           
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                grapplingHook.CreateHook();
+            }
+        }
+
+        private void DisableHook()
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                grapplingHook.Disable();
+            }
+        }
+
+        private void ClimbHook()
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                grapplingHook.Climb();
+            }
+        }
+
+        private void DescendHook()
+        {
+            if (Input.GetKey(KeyCode.S))
+            {
+                grapplingHook.Descend();
             }
         }
     }

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - Items
   - Platforms
   - Parralax
-  - 
-  - 
-  - 
+  - Collectables
+  - Projectile
+  - Rope
   - 
   - 
   - 
@@ -44,14 +45,17 @@ TagManager:
   - name: Background
     uniqueID: 4229786335
     locked: 0
+  - name: Ground
+    uniqueID: 4114998107
+    locked: 0
   - name: Enemy
     uniqueID: 945109393
     locked: 0
-  - name: Interactebles
+  - name: Interactables
     uniqueID: 526310645
     locked: 0
-  - name: Ground
-    uniqueID: 4114998107
+  - name: Collectables
+    uniqueID: 2909866103
     locked: 0
   - name: Trap
     uniqueID: 1487439925

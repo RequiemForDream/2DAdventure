@@ -1,3 +1,4 @@
+using Assets.Scripts.Character.CharacterController;
 using Assets.Scripts.Interactables;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ namespace Assets.Scripts.MainCharacterController
 
         [Header("Climbing")]
         [SerializeField] private float climbSpeed = 2f;
+
+        [Header("Swinging")]
+        [SerializeField] private float swingSpeed = 0.02f;
 
         private new Rigidbody2D rigidbody2D;
         private bool isGrounded;
@@ -37,7 +41,8 @@ namespace Assets.Scripts.MainCharacterController
 
         public void Move(Vector2 direction)
         {
-            rigidbody2D.velocity = new Vector2(direction.x * speed, rigidbody2D.velocity.y);
+            //rigidbody2D.AddForce(new Vector2(direction.x, 0) * swingSpeed * Time.deltaTime, ForceMode2D.Impulse);
+            rigidbody2D.velocity = new Vector2(direction.x * speed, rigidbody2D.velocity.y);           
         }
 
         public void Jump()
@@ -52,8 +57,12 @@ namespace Assets.Scripts.MainCharacterController
         {
             rigidbody2D.velocity = new Vector2(direction.x * climbSpeed, direction.y * climbSpeed);
         }
-    }
 
+        public void Swing(Vector2 direction)
+        {
+            //rigidbody2D.AddForce(new Vector2(direction.x, 0) * swingSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        }
+    }
 }
 
 
