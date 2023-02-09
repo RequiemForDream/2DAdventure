@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bank : MonoBehaviour
 {
-    [SerializeField] private MoneyViewer moneyViewer;
+    [SerializeField] private Viewer moneyViewer;
 
     private int moneyAmount;
 
@@ -15,6 +15,6 @@ public class Bank : MonoBehaviour
     private void SetMoney(int moneyAmount)
     {
         this.moneyAmount += moneyAmount;
-        moneyViewer.SetMoney(this.moneyAmount);
+        moneyViewer.SetView(this.moneyAmount);
     }
 }

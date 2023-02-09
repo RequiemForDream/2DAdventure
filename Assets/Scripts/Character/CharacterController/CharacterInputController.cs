@@ -2,7 +2,6 @@
 using System;
 using Assets.Scripts.Interactables;
 using Assets.Scripts.Character.Colliders;
-using Assets.Scripts.Character.CharacterController;
 
 namespace Assets.Scripts.MainCharacterController
 {
@@ -13,14 +12,12 @@ namespace Assets.Scripts.MainCharacterController
         private IControllable controllable;
         private IClimbable climbable;
         private IPlatformable platformable;
-        private IHookable hookable;
 
         private void Awake()
         {
             controllable = GetComponent<IControllable>();
             climbable = GetComponent<IClimbable>();
             platformable = GetComponentInChildren<IPlatformable>();
-            hookable = GetComponent<IHookable>();
 
             if (controllable == null )
             {
@@ -92,7 +89,7 @@ namespace Assets.Scripts.MainCharacterController
         }
 
         private void DisableHook()
-        {
+        {            
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 grapplingHook.Disable();

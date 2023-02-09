@@ -7,10 +7,10 @@ public class HealItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IHandleHealth handleHealth = collision.GetComponent<IHandleHealth>();
+        IHealthHandler handleHealth = collision.GetComponent<IHealthHandler>();
         if (handleHealth != null)
         {
-            handleHealth.ApplyHeal(healAmount);
+            handleHealth.ApplyHeal(healAmount, gameObject);
             Destroy();
         }
     }

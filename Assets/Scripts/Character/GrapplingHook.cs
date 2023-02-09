@@ -13,6 +13,8 @@ public class GrapplingHook : MonoBehaviour
     private RaycastHit2D hit;
     private DistanceJoint2D distanceJoint;
 
+    public bool isOnHook { get; private set; }
+
     public bool jointEnabled => distanceJoint.enabled; 
 
     private void Start()
@@ -27,12 +29,16 @@ public class GrapplingHook : MonoBehaviour
         if (distanceJoint.enabled) 
         {
             hookRenderer.Render(transform.position, hit.point);
+            isOnHook = true;
         }
+        else
+        {
+            isOnHook = false;
+        }       
 
         if (distanceJoint.distance > maximalLength)
         {
-            distanceJoint.enabled = false;
-            hookRenderer.Disable();
+            distanceJoint.distance = maximalLength;
         }
     }
 

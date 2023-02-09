@@ -12,9 +12,9 @@ public class ChestChecker : MonoBehaviour
         
         if (openable != null)
         {               
-            if (openable.isOpened == false)
+            if (openable != null)
             {
-               openable.Open();
+                openable.Detected(gameObject);
             }
         }               
     }

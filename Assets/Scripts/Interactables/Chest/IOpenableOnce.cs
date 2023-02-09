@@ -4,7 +4,6 @@ namespace Assets.Scripts.Interactables.Opening
 {
     public interface IOpenableOnce
     {
-        bool isOpened { get; }
-        void Open();
+        void Detected(GameObject source);
     }
 }
