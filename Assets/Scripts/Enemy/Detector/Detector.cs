@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Interactables.Opening;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemy.Detector
@@ -9,7 +8,7 @@ namespace Assets.Scripts.Enemy.Detector
         public event ObjectDetectedHandler OnGameObjectDetectedEvent;
         public event ObjectDetectedHandler OnGameObjectDetectionReleasedEvent;
 
-        /*public GameObject[] detectedObjects => _detectedObjects.ToArray();
+        public GameObject[] detectedObjects => _detectedObjects.ToArray();
 
         private List<GameObject> _detectedObjects = new List<GameObject>();
 
@@ -101,6 +100,6 @@ namespace Assets.Scripts.Enemy.Detector
         {
             detectedObject = collider.GetComponent<IDetectableObject>();
             return detectedObject != null;
-        }*/
+        }
     }
 }

@@ -207,22 +207,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 779949334166521120, guid: a20241ceb1a408d4180f019dfa4ec120, type: 3}
-      propertyPath: newChestPosition.x
-      value: 58.49635
-      objectReference: {fileID: 0}
-    - target: {fileID: 779949334166521120, guid: a20241ceb1a408d4180f019dfa4ec120, type: 3}
-      propertyPath: newChestPosition.y
-      value: 17.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 3724210962371277612, guid: a20241ceb1a408d4180f019dfa4ec120, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3724210962371277612, guid: a20241ceb1a408d4180f019dfa4ec120, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 526310645
-      objectReference: {fileID: 0}
+    - target: {fileID: 1760453991, guid: a20241ceb1a408d4180f019dfa4ec120, type: 3}
+      propertyPath: _coinsInteractor
+      value: 
+      objectReference: {fileID: 1179565422}
+    - target: {fileID: 1760453991, guid: a20241ceb1a408d4180f019dfa4ec120, type: 3}
+      propertyPath: resourcesMediator
+      value: 
+      objectReference: {fileID: 1467145142}
     - target: {fileID: 7709689870146449190, guid: a20241ceb1a408d4180f019dfa4ec120, type: 3}
       propertyPath: m_Name
       value: WoodenChest
@@ -954,7 +946,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 233914771}
-  - component: {fileID: 233914772}
   m_Layer: 0
   m_Name: GemsInteractor
   m_TagString: Untagged
@@ -977,19 +968,6 @@ Transform:
   m_Father: {fileID: 2134869153}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &233914772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233914770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7097709558400742bc4d19759bbeeff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mediator: {fileID: 2134869152}
 --- !u!1 &295004353
 GameObject:
   m_ObjectHideFlags: 0
@@ -4128,10 +4106,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1179565420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa4c4b80ab621204eabdc5463ec87d82, type: 3}
+  m_Script: {fileID: 11500000, guid: fdedd1982c451884d8d558964b492f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyViewer: {fileID: 2009630325}
+  mediator: {fileID: 1467145142}
+  moneyViewer: {fileID: 2009630328}
 --- !u!1 &1205512947
 GameObject:
   m_ObjectHideFlags: 0
@@ -17840,10 +17819,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1439858493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa4c4b80ab621204eabdc5463ec87d82, type: 3}
+  m_Script: {fileID: 11500000, guid: f7097709558400742bc4d19759bbeeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyViewer: {fileID: 1092038010}
+  mediator: {fileID: 1467145142}
 --- !u!1 &1442753999
 GameObject:
   m_ObjectHideFlags: 0
@@ -18006,6 +17985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467145140}
   - component: {fileID: 1467145141}
+  - component: {fileID: 1467145142}
   m_Layer: 5
   m_Name: ResourcesHUD
   m_TagString: Untagged
@@ -18087,6 +18067,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1467145142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467145139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8aa47ad74aeb943974ca30c2d57ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gemInteractor: {fileID: 1439858495}
+  coinsInteractor: {fileID: 1179565422}
 --- !u!1001 &1467811395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18619,9 +18613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2aaf552eafbe04e95644b213ac7cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!70 &1616052336
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18651,7 +18642,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.00034332275, y: 0.0011594296}
@@ -20155,7 +20146,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1914617490}
-  - component: {fileID: 1914617491}
   m_Layer: 0
   m_Name: 'CoinsInteractor '
   m_TagString: Untagged
@@ -20178,19 +20168,6 @@ Transform:
   m_Father: {fileID: 2134869153}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1914617491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914617489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdedd1982c451884d8d558964b492f63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mediator: {fileID: 2134869152}
 --- !u!1 &1978979611
 GameObject:
   m_ObjectHideFlags: 0
@@ -20333,7 +20310,7 @@ GameObject:
   - component: {fileID: 2009630324}
   - component: {fileID: 2009630327}
   - component: {fileID: 2009630326}
-  - component: {fileID: 2009630325}
+  - component: {fileID: 2009630328}
   m_Layer: 5
   m_Name: MoneyViewer
   m_TagString: Untagged
@@ -20361,18 +20338,6 @@ RectTransform:
   m_AnchoredPosition: {x: 250.01, y: 0.00010014}
   m_SizeDelta: {x: 300.01, y: 100}
   m_Pivot: {x: 0.49999994, y: 0.5}
---- !u!114 &2009630325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009630323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2c5d323b1deb7428c8b743cfbe27e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2009630326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20470,6 +20435,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009630323}
   m_CullTransparentMesh: 1
+--- !u!114 &2009630328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009630323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2c5d323b1deb7428c8b743cfbe27e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2013684800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20893,11 +20870,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947183721264177312, guid: 76a50d340ada33246819c851f3461fae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.02133
+      value: 62.63
       objectReference: {fileID: 0}
     - target: {fileID: 4947183721264177312, guid: 76a50d340ada33246819c851f3461fae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.383974
+      value: 15.13
       objectReference: {fileID: 0}
     - target: {fileID: 4947183721264177312, guid: 76a50d340ada33246819c851f3461fae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21234,7 +21211,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2134869153}
-  - component: {fileID: 2134869152}
   m_Layer: 0
   m_Name: Interactors
   m_TagString: Untagged
@@ -21242,20 +21218,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2134869152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134869151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f8aa47ad74aeb943974ca30c2d57ed5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gemInteractor: {fileID: 233914772}
-  coinsInteractor: {fileID: 1914617491}
 --- !u!4 &2134869153
 Transform:
   m_ObjectHideFlags: 0

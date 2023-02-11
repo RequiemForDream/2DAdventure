@@ -13,11 +13,11 @@ namespace Assets.Scripts.Mediator
             this.mediator = mediator;
         }
 
-        protected virtual void Send(int amount)
+        public virtual void Send(int amount)
         {
             mediator.Send(this, amount);
         }
 
-        public abstract void Notify(int amount);                       
+        public abstract void Notify(int amount); 
     }
 }

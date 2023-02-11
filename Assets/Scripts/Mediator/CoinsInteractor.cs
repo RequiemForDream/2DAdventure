@@ -2,33 +2,23 @@
 
 namespace Assets.Scripts.Mediator
 {
-    public class CoinsInteractor : Interactor
+    public class CoinsInteractor : Interactor 
     {
-        public event OnAmountChanged OnCoinsAmountChanged;
+        [SerializeField] private Viewer moneyViewer;
 
-        private void OnEnable()
+        private int coinsAmount;
+
+        private void Awake()
         {
-            OnCoinsAmountChanged += ChangeAmount;
+            coinsAmount = 0;
         }
 
-        private void OnDisable()
-        {
-            OnCoinsAmountChanged -= ChangeAmount;
-        }
-
-        private void ChangeAmount(GameObject sender, int amount)
-        {
-            Send(amount);
-        }
-
-        public CoinsInteractor(Mediator mediator) : base(mediator) 
-        {
-
-        }
+        public CoinsInteractor(Mediator mediator) : base(mediator) { }
 
         public override void Notify(int amount)
         {
-            Debug.Log("Amount of collected coins: " + amount);
+            coinsAmount += amount;
+            moneyViewer.SetView(coinsAmount);
         }
     }
 }

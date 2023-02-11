@@ -1,34 +1,19 @@
 using UnityEngine;
-using Assets.Scripts.Interactables.Opening;
-using Assets.Scripts.Mediator;
+using Assets.Scripts.Enemy.Detector;
 
 [RequireComponent(typeof(Collider2D))]
-public class Chest : MonoBehaviour, IOpenableOnce
+public class Chest : MonoBehaviour, IDetectableObject
 {
-    [SerializeField] private ChestInfo chestInfo;
-    [SerializeField] private CoinsInteractor coinsInteractor;
-    [SerializeField] private Vector2 newChestPosition;
-    
-    private Animator animator;
-    private Collider2D chestCollider;
-    private readonly int openHash = Animator.StringToHash("isOpened");   
+    public event ObjectDetectedHandler OnGameObjectDetectEvent;
+    public event ObjectDetectedHandler OnGameObjectDetectionReleasedEvent;
 
-    private void Start()
+    public void Detected(GameObject detectionSource)
     {
-        animator = GetComponent<Animator>();
-        chestCollider = GetComponent<Collider2D>();
+        OnGameObjectDetectEvent?.Invoke(detectionSource, gameObject);
     }
 
-    public void Detected(GameObject sender)
+    public void DetectionReleased(GameObject detectionSource)
     {
-        Open();
+        OnGameObjectDetectionReleasedEvent?.Invoke(detectionSource, gameObject);
     }
-
-    private void Open()
-    {
-        animator.SetBool(openHash, true);
-        chestCollider.enabled = false;
-        gameObject.transform.position = newChestPosition;
-        EventManager.SendMoneyChanged(chestInfo.reward);
-    }   
 }
