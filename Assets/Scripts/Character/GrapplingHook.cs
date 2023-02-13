@@ -1,11 +1,12 @@
+using Assets.Scripts.Character.CharacterController;
 using UnityEngine;
 
 [RequireComponent(typeof(DistanceJoint2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class GrapplingHook : MonoBehaviour
 {
-    [SerializeField] private float displacementSpeed = 0.02f;
-    [SerializeField] private float maximalLength;
+    [SerializeField] private float maximalLength = 8;
+    [SerializeField] private float displacementSpeed = 0.02f;   
     [SerializeField] private HookRaycaster raycaster;
     [SerializeField] private HookRenderer hookRenderer;
 
@@ -14,8 +15,6 @@ public class GrapplingHook : MonoBehaviour
     private DistanceJoint2D distanceJoint;
 
     public bool isOnHook { get; private set; }
-
-    public bool jointEnabled => distanceJoint.enabled; 
 
     private void Start()
     {

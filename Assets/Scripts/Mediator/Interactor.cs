@@ -5,7 +5,7 @@ namespace Assets.Scripts.Mediator
     public delegate void OnAmountChanged(GameObject sender, int amount);
 
     public abstract class Interactor : MonoBehaviour
-    {
+    {       
         [SerializeField] protected Mediator mediator;
 
         public Interactor(Mediator mediator)
@@ -13,7 +13,7 @@ namespace Assets.Scripts.Mediator
             this.mediator = mediator;
         }
 
-        public virtual void Send(int amount)
+        public virtual void Send(GameObject sender, int amount)
         {
             mediator.Send(this, amount);
         }

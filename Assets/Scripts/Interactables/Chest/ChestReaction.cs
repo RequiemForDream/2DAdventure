@@ -34,7 +34,7 @@ namespace Assets.Scripts.Interactables.Chest
         {
             animator.SetBool(openHash, true);
             resourcesMediator.coinsInteractor = _coinsInteractor;
-            _coinsInteractor.Send(chestInfo.reward);
+            _coinsInteractor.Send(this.gameObject, chestInfo.reward);
             chestCollider.enabled = false;
             Debug.Log("Opened");
         }

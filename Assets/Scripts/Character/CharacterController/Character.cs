@@ -1,3 +1,4 @@
+using Assets.Scripts.Character.CharacterController;
 using Assets.Scripts.Interactables;
 using UnityEngine;
 
@@ -6,10 +7,13 @@ namespace Assets.Scripts.MainCharacterController
     [RequireComponent(typeof(Rigidbody2D))]
     public class Character : MonoBehaviour, IControllable, IClimbable
     {
-        [Header("Movement")]
-        [SerializeField] private float speed = 2f;
-        [SerializeField] private Transform groundChecker;
-        [SerializeField] private float jumpHeight = 3f;
+        [SerializeField] private CharacterStats characterStats;
+
+        [SerializeField] private float speed => characterStats.speed;
+        [SerializeField] private float jumpHeight => characterStats.jumpStrength;
+
+        [Header("Movement")]        
+        [SerializeField] private Transform groundChecker;        
         [SerializeField] private float checkGroundRadius = 0.4f;
         [SerializeField] private LayerMask groundMask;
 
