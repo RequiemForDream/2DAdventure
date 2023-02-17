@@ -1,4 +1,4 @@
-using Assets.Scripts.MainCharacterController;
+using Assets.Scripts.Controller;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;

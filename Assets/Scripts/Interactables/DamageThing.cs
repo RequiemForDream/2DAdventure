@@ -1,4 +1,4 @@
-using Assets.Scripts.Character.CharacterHealth;
+using Assets.Scripts.Character.Health;
 using UnityEngine;
 
 public abstract class DamageThing : MonoBehaviour

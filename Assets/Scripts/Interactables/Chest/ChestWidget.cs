@@ -1,9 +1,10 @@
 ﻿using Assets.Scripts.Enemy.Detector;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Interactables.Chest
+namespace Assets.Scripts.Controller.Chest
 {
     public class ChestWidget : MonoBehaviour
     {
@@ -24,13 +25,17 @@ namespace Assets.Scripts.Interactables.Chest
         {
             switch (isEnteredByPlayer)
             {
-                case true:
-                    widget.fillAmount += timeToFilling * Time.deltaTime;
-                    if (widget.fillAmount == 1f)
-                        OnFilledImage.Invoke();
-                        OnDestroy();
+                case true:                                       
+                        widget.fillAmount += timeToFilling * Time.deltaTime;
+                        if (widget.fillAmount == 1f)
+                        {
+                            OnFilledImage.Invoke();
+                            Destroy(gameObject);
+                        }
                     break;
+
                 case false:
+                    widget.fillAmount -= timeToFilling * Time.deltaTime;
                     break;
             }                
         }
@@ -38,8 +43,8 @@ namespace Assets.Scripts.Interactables.Chest
         private void OnEnable()
         {
             detectableObject.OnGameObjectDetectEvent +=
-                (GameObject source, GameObject detectedObject) => isEnteredByPlayer = true;
-
+                (GameObject source, GameObject detectedObject) => isEnteredByPlayer = true; 
+                       
                 detectableObject.OnGameObjectDetectionReleasedEvent += 
                     (GameObject source, GameObject detectedObject) => isEnteredByPlayer = false;
         }
@@ -51,11 +56,6 @@ namespace Assets.Scripts.Interactables.Chest
 
             detectableObject.OnGameObjectDetectionReleasedEvent -=
                     (GameObject source, GameObject detectedObject) => isEnteredByPlayer = false;
-        }
-
-        private void OnDestroy()
-        {
-            Destroy(gameObject, 5);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Interactables.Opening
+namespace Assets.Scripts.Controller.Opening
 {
     public interface IOpenableOnce
     {

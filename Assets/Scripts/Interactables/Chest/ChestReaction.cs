@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Mediator;
 using UnityEngine;
 
-namespace Assets.Scripts.Interactables.Chest
+namespace Assets.Scripts.Controller.Chest
 {
     public class ChestReaction : MonoBehaviour
     {

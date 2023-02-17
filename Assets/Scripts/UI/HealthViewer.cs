@@ -1,18 +1,20 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TMP_Text))]
-public class HealthViewer : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    private TMP_Text healthView;
-
-    private void Start()
+    public class HealthViewer : MonoBehaviour
     {
-        healthView = GetComponent<TMP_Text>();
-    }
+        private TMP_Text view;
 
-    public void SetHealth(float health)
-    {
-        healthView.text = health.ToString();
+        private void Start()
+        {
+            view = GetComponent<TMP_Text>();
+        }
+
+        public void SetView(float amount)
+        {
+            view.text = amount.ToString();
+        }
     }
 }

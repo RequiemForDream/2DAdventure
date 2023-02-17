@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using Assets.Scripts.UI.Shop;
+using Assets.Scripts.UI.CharacteristicsShop;
 
 namespace Assets.Scripts.UI
 {
     public class UIController : MonoBehaviour
     {
-        [SerializeField] private ShopManager shop;
+        [SerializeField] private CharacteristicsShop.CharacteristicsShop shop;
 
         private void Start()
         {
