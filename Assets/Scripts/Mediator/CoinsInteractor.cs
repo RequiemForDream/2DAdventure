@@ -1,26 +1,23 @@
 ﻿using Assets.Scripts.UI;
-using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Mediator
 {
     public class CoinsInteractor : Interactor, IValueHandler
     {
-        public event Action OnBought;
-
         public int value => coinsAmount;
     
-
         [SerializeField] private Viewer moneyViewer;
 
-        private int coinsAmount;
+        public int coinsAmount { get; private set; } 
 
         public CoinsInteractor(Mediator mediator) : base(mediator) { }
 
-        private void Awake()
+        private void Start()
         {
-            coinsAmount = 0;
-        }      
+            coinsAmount = 10;
+            moneyViewer.SetView(coinsAmount);
+        }  
 
         public override void Notify(int amount)
         {

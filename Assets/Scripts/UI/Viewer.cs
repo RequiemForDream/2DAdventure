@@ -6,7 +6,7 @@ public class Viewer : MonoBehaviour
 {
     private TMP_Text view;
 
-    private void Start()
+    private void Awake()
     {
         view = GetComponent<TMP_Text>();
     }

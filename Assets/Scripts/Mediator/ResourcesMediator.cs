@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Mediator
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Mediator
 {
     public class ResourcesMediator : Mediator
     {

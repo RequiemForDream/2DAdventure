@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace Assets.Scripts.Character.Controller
@@ -6,9 +8,26 @@ namespace Assets.Scripts.Character.Controller
     [CreateAssetMenu(fileName = "CharacterStats", menuName = "CharacterStats")]
     public class CharacterStats : ScriptableObject
     {
-        public float speed = 2f;
-        public float jumpStrength = 6.5f;
-        public float ropeLength = 6f;
-        public float maxHealth = 100f;
+        public event Action<string, float> OnCharacteristicChange;
+
+        [Header("Characteristics")]
+        [SerializeField] internal float maxHealth = 100f;
+        public float hookLength = 8f;
+
+        public Dictionary<string, float> characteristics;
+
+        public void Awake()
+        {
+            characteristics = new Dictionary<string, float>
+            {
+                { "health", maxHealth },
+                { "hookLenght", hookLength },
+            };
+        }
+
+        internal void SendCharactristicChanged(string key, float value)
+        {
+            OnCharacteristicChange?.Invoke(key, value);
+        }
     }
 }

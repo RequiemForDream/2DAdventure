@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Character.Controller;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Assets.Scripts.Character.Characteristics
 {
     public class CharacteristicsChangeManager : MonoBehaviour
     {              
-        [SerializeField] private CharacteristicsContainer container;
+        [SerializeField] private CharacterStats container;
         private Dictionary<string, float> _characteristics => container.characteristics;
 
         private void OnEnable()
@@ -14,12 +15,22 @@ namespace Assets.Scripts.Character.Characteristics
             CharacteristicChanger.OnCharacteristicChange += Change;
         }
 
+        private void Start()
+        {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            container.Awake();
+        }
+
         private void Change(string key, ChangeType type, float valueToChange,  GameObject sender)
         {
-            if (!_characteristics.ContainsKey(key)) 
-            {
-                throw new Exception($"There is a mistake in {key}! Check {key} name!");
-            }           
+            //if (!_characteristics.ContainsKey(key)) 
+           // {
+          //      throw new Exception($"There is a mistake in {key}! Check {key} name!");
+           // }           
 
             switch (type)
             {
@@ -40,7 +51,8 @@ namespace Assets.Scripts.Character.Characteristics
                         break;
             }
             Debug.Log(_characteristics[key]);
-            container.SendCharactristicChanged(key, container.characteristics[key]);
+            container.SendCharactristicChanged(key, valueToChange);
+            Debug.Log("Change");
         }
 
         private void OnDisable()

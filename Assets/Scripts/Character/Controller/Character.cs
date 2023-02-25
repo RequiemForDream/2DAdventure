@@ -8,8 +8,8 @@ namespace Assets.Scripts.Controller
     {
         [SerializeField] private CharacterStats characterStats;
 
-        [SerializeField] private float speed => characterStats.speed;
-        [SerializeField] private float jumpHeight => characterStats.jumpStrength;
+        [SerializeField] private float speed = 5f;
+        [SerializeField] private float jumpHeight = 8f;
 
         [Header("Movement")]        
         [SerializeField] private Transform groundChecker;        

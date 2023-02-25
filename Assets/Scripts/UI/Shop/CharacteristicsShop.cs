@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Mediator;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ namespace Assets.Scripts.UI.CharacteristicsShop
         [SerializeField] private Transform shopPanel;
         [SerializeField] private ResourcesMediator resourcesMediator;
         [SerializeField] private Interactor _coinsInteractor;
+        [SerializeField] private CoinsInteractor ddff;
         [SerializeField, GameObjectOfType(typeof(IValueHandler))] private GameObject valueHandler;
 
         private List<PurchaseCharacteristicButton> purchaseButtons;

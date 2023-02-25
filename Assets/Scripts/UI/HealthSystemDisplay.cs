@@ -1,39 +1,33 @@
-using Assets.Scripts.Character.Characteristics;
 using Assets.Scripts.Character.Health;
 using Assets.Scripts.UI;
 using UnityEngine;
 
 public class HealthSystemDisplay : MonoBehaviour
 {
-    [SerializeField] private CharacteristicsContainer container;
     [SerializeField] private PlayerHealth playerHealthSystem;
     [SerializeField] private HealthSlider healthBar;
     [SerializeField] private HealthViewer healthViewer;
 
     private void OnEnable()
     {
-        playerHealthSystem.OnHealthChanged += SetHealth;
-        playerHealthSystem.OnMaxHealthChanged += SetMaxHealth;
+        playerHealthSystem.OnAnyHealthChanged += SetHealth;
+        playerHealthSystem.OnAnyHealthChanged += SetMaxHealth;
     }
 
     private void OnDisable()
     {
-        playerHealthSystem.OnHealthChanged -= SetHealth;
-        playerHealthSystem.OnMaxHealthChanged -= SetMaxHealth;
+        playerHealthSystem.OnAnyHealthChanged -= SetHealth;
+        playerHealthSystem.OnAnyHealthChanged -= SetMaxHealth;
     }
 
-    private void SetHealth(float health)
+    private void SetHealth(float currentHealth, float maxHealth)
     {
+        float health = currentHealth / maxHealth;
         healthBar.SetFillBar(health);
     }
 
-    private void SetMaxHealth(float maxHealth)
+    private void SetMaxHealth(float currentHealth, float maxHealth)
     {
-        healthViewer.SetView(maxHealth);        
-    }
-
-    private void Update()
-    {
-        //SetMaxHealth(playerHealthSystem.maxHealth);
+        healthViewer.SetView(currentHealth, maxHealth);        
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Enemy
 {
-    public abstract class Enemy : MonoBehaviour, IEnemy
+    public abstract class Enemy : MonoBehaviour
     {
         [SerializeField] private int health;
         public GameObject player;

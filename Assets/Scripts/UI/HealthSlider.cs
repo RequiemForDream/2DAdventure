@@ -6,13 +6,13 @@ public class HealthSlider : MonoBehaviour
 {
     private Slider slider;
 
-    private void Start()
+    private void Awake()
     {
         slider = GetComponent<Slider>();
     }
 
     public void SetFillBar(float health)
     {
-        slider.value = (health / 100);        
+        slider.value = health;      
     }
 }

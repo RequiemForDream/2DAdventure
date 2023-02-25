@@ -1,59 +1,65 @@
 using Assets.Scripts.Character.Characteristics;
+using Assets.Scripts.Character.Controller;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Character.Health
 {
     public class PlayerHealth : MonoBehaviour, IHealthHandler
     {
-        public delegate void HealthChangedHandler(float amount);
-        public event HealthChangedHandler OnHealthChanged;
-        public event HealthChangedHandler OnMaxHealthChanged;
+        public event Action<float, float> OnAnyHealthChanged;
 
-        [SerializeField] private CharacteristicsContainer container;
+        private CharacterMaxHealthProvider maxHealthProvider;
 
-        private const string MAXHEALTH = "health";
-        public float maxHealth { get; private set; }
+        private float maxHealth;
         private float currentHealth;
 
-        private void Start()
+        private void Awake()
         {
-            currentHealth = container.maxHealth;
-            maxHealth = container.maxHealth;
+            maxHealthProvider = new CharacterMaxHealthProvider();
+            maxHealth = maxHealthProvider.maxHealth;
+            currentHealth = maxHealth;
+            OnAnyHealthChanged?.Invoke(currentHealth, maxHealth);
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            maxHealth = container.maxHealth;
+            maxHealthProvider.OnMaxHealthChanged += SetMaxHealth;
+        }
+
+        private void OnDisable()
+        {
+            maxHealthProvider.OnMaxHealthChanged -= SetMaxHealth;
         }
 
         public void ApplyDamage(float damage, GameObject source)
         {
             currentHealth -= damage;
-            OnHealthChanged?.Invoke(currentHealth);
+            OnAnyHealthChanged?.Invoke(currentHealth, maxHealth);
         }
 
         public void ApplyHeal(float heal, GameObject source)
         {
             currentHealth += heal;
-            OnHealthChanged?.Invoke(currentHealth);
+            OnAnyHealthChanged?.Invoke(currentHealth, maxHealth);
         }
 
-        private void ChangeMaxHealth(string key, float value)
+        private void SetMaxHealth(float maxHealth)
         {
-            if (key == MAXHEALTH)
-            {
-                OnMaxHealthChanged?.Invoke(value);
-            }
+            this.maxHealth = maxHealth;
+            OnAnyHealthChanged?.Invoke(currentHealth, maxHealth);
         }
 
-        private void OnEnable()
+        private void Update()
         {
-            container.OnCharacteristicChange += ChangeMaxHealth;
-        }
+            if (Input.GetKeyDown(KeyCode.D))
+                ApplyDamage(10, this.gameObject);
 
-        private void OnDisable()
-        {
-            container.OnCharacteristicChange -= ChangeMaxHealth;
+            if (Input.GetKeyDown(KeyCode.H))
+                ApplyDamage(-10, this.gameObject);
+
+            if (Input.GetKeyDown(KeyCode.I))           
+                maxHealthProvider.Modify(10);                         
         }
     }
 }

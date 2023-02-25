@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14874c7cea823343b88a310504f7dc1, type: 3}
   m_Name: CharacterStats
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpStrength: 8
-  ropeLength: 8
   maxHealth: 100
+  hookLength: 8

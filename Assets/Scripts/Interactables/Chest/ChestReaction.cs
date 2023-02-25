@@ -5,18 +5,19 @@ namespace Assets.Scripts.Controller.Chest
 {
     public class ChestReaction : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private ChestInfo chestInfo;
         [SerializeField] private ChestWidget chestWidget;
         [SerializeField] private ResourcesMediator resourcesMediator;
-        [SerializeField] private Interactor _coinsInteractor;
+        [SerializeField] private Interactor coinsInteractor;
 
-        [SerializeField] private Animator animator;
+        private Animator chestAnimator;
         private Collider2D chestCollider;
         private readonly int openHash = Animator.StringToHash("isOpened");
 
         private void Awake()
         {
-            animator = GetComponent<Animator>();
+            chestAnimator = GetComponent<Animator>();
             chestCollider = GetComponent<Collider2D>();           
         }
 
@@ -32,9 +33,9 @@ namespace Assets.Scripts.Controller.Chest
 
         private void OpenChest()
         {
-            animator.SetBool(openHash, true);
-            resourcesMediator.coinsInteractor = _coinsInteractor;
-            _coinsInteractor.Send(this.gameObject, chestInfo.reward);
+            chestAnimator.SetBool(openHash, true);
+            resourcesMediator.coinsInteractor = this.coinsInteractor;
+            coinsInteractor.Send(this.gameObject, chestInfo.reward);
             chestCollider.enabled = false;
             Debug.Log("Opened");
         }
