@@ -15,8 +15,6 @@ namespace Assets.Scripts.UI.CharacteristicsShop
         [SerializeField] private TMP_Text amountOfPurchasesText;
         [SerializeField] private TMP_Text priceText;
 
-        [SerializeField] private CharacteristicChanger changer;
-
         private int currentAmountOfPurchases;
 
         private void Awake()
@@ -35,7 +33,6 @@ namespace Assets.Scripts.UI.CharacteristicsShop
         {
             currentAmountOfPurchases -= 1;
             amountOfPurchasesText.text = (currentAmountOfPurchases + "/" + maxAmountOfPurchases).ToString();
-            changer.ChangeCharacteristic(); 
         }
     }
 }
